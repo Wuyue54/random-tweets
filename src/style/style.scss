@@ -1,3 +1,94 @@
-body{
-	background-color:black;
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+
+$break-medium: "only screen and (min-width: 768px)";
+
+html,body { 
+	height: 100%!important; 
+	margin: 0px; 
+	padding: 0px; 
 }
+
+ul, li{
+	list-style: none;
+}
+input ,button{
+	border: none;
+}
+
+
+#app{
+	height:100%;
+}
+
+.bg{
+	width:100%;
+	height: 100%;
+	padding: 1em;
+	text-align: center;
+	transition: all .6s ease-in-out, background-color .3s;
+}
+
+.title{
+	margin: 1.6em 0 0 0;
+	font: 4em Permanent Marker;
+	color: #FFF;
+}
+
+.inputGroup{
+	width: 100%;
+	padding: 1em;
+	input, button{
+		display: block;
+		height: 3em;
+		padding: 0.5em;
+		width:100%;
+	}
+	input,button{
+		width:100%;
+	}
+	button{
+		cursor: pointer;
+		color: #FFF;
+		background-color: #f76661;
+		&:hover{
+			background-color: #f74940;
+		}
+	}
+}
+.tweetsList{
+	width: 100%;
+}
+.tweetSpan{
+	background-color: #FFF;
+	width: 100%;
+	padding: 1em;
+	margin: 1em 0;
+	text-align: left;
+	p{
+		line-height: 1.5em;
+		margin-bottom: 1em;
+	}
+}
+
+@media #{$break-medium}{
+	.contain{
+		width:100%;
+	}
+	.inputGroup{
+		input, button{
+			display: inline;
+		}
+		input{
+			width: 300px;
+		}
+		button{
+			width: 70px;
+		}
+	}
+	.tweetsList{
+		width: 600px;
+		margin: 0 auto;
+	}
+
+}
+

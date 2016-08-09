@@ -18,7 +18,7 @@ class TweetsActions{
 		}).done((data)=>{
 			this.getTweetsSuccess(data);
 		}).fail((error)=>{
-			console.log('fail');
+			console.log(error);
 			this.getTweetsFail(error);
 		});
 	}

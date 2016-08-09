@@ -33,7 +33,14 @@ app.get('/api/tweets',function(req,res){
 	};
 	
 	client.get('search/tweets', filterObj, function(error, tweets, response) {
-	   res.send(tweets);
+
+		if(error){
+			console.log(error);
+			res.send(error);
+		}
+		if(tweets){
+			res.send(tweets);
+		}
 	});
 });
 

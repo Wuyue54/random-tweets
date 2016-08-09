@@ -2,7 +2,8 @@ import React from 'react';
 import TweetsActions from '../actions/TweetsActions';
 import TweetsStore from '../stores/TweetsStore';
 import Tweet from './Tweet';
-import Typist from 'react-typist';
+import Typist from 'react-typist';	
+
 
 class Tweets extends React.Component{
 	constructor(props){
@@ -24,9 +25,16 @@ class Tweets extends React.Component{
 	}
 
 	handleSubmit(e) {
+		let value = this.refs.searchInpu.value;
+		let flag = Boolean(value);
+		if(!flag){
+	    	alert('please input sth');
+	    	return;
+	    }
+
     	e.preventDefault();
 	    let searchQuery = this.state.searchQuery.trim();
-
+	    
 	    if (searchQuery) {
 	      TweetsActions.getTweets({
 	        searchQuery: searchQuery,
@@ -39,18 +47,25 @@ class Tweets extends React.Component{
 		let tweets = [];
 		this.state.tweets.forEach((t ,index)=>{
 			tweets.push(<Tweet  key ={index}
+								query = {this.state.searchQuery}
 								created_at = {t.created_at}
 								text = {t.text}
 								username = {t.user.name}
 						/>);
 		});
 
+		let styleObj ={
+            backgroundColor: this.state.bgColor,
+            height: this.state.height
+        };
+
 		return(
-			<div className ='bg'>
-				<h1>Random Tweets</h1>
-				<div>
+			<div className ='bg' style = {styleObj}>
+				<h1 className ='title'>Random Tweets</h1>
+				<div className = 'mainPart'>
 					<form ref='searchForm' className = 'inputGroup' onSubmit = {this.handleSubmit.bind(this)}>
-						<input type = 'text' 
+						<input  ref = 'searchInpu'
+								type = 'text' 
 								className ='input' 
 								placeholder ='try some tweets' 
 								value = {this.state.searchQuery}
@@ -58,7 +73,7 @@ class Tweets extends React.Component{
 						/>
 						<button onClick={this.handleSubmit.bind(this)}>Go</button>
 					</form>
-					 <ul>
+					<ul className ='tweetsList'>
         				{tweets}
       				</ul>					
 				</div>
