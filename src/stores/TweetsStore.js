@@ -16,7 +16,8 @@ class TweetsStore{
 	}
 
 	onGetTweetsSuccess(data){
-		this.tweets = data.statuses;
+		console.log(data);
+		this.tweets = data;
 		this.bgColor = randomColor({
 						   luminosity: 'light',
 						   hue: 'green'

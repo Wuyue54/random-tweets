@@ -39,7 +39,7 @@ app.get('/api/tweets',function(req,res){
 			res.send(error);
 		}
 		if(tweets){
-			res.send(tweets);
+			res.send(tweets.statuses);
 		}
 	});
 });
