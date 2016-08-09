@@ -4,17 +4,20 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "start": "webpack-dev-server --hot --progress --colors",
+    "build": "webpack --progress --colors"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "alt": "^0.18.5",
     "express": "^4.14.0",
-    "jQuery": "^1.7.4",
+    "jquery": "^3.1.0",
     "path": "^0.12.7",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "request": "^2.74.0",
     "twitter": "1.4.0"
   },
   "devDependencies": {

@@ -1,9 +1,10 @@
 import React from 'react';
+import Tweet from './Tweet';
 
 class App extends React.Component{
 	render(){
 		return(
-			<h1>Hello World,  WTF</h1>
+			<Tweet />
 		);		
 	}
 }
