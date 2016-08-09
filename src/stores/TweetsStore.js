@@ -1,21 +1,20 @@
 import alt from '../alt';
-import TweetActions from '../actions/TweetActions';
+import TweetsActions from '../actions/TweetsActions';
 import toastr from 'toastr';
 
-class TweetStore{
+class TweetsStore{
 	constructor(){
-		this.bindActions(TweetActions);
+		this.bindActions(TweetsActions);
 		this.tweets = [];
 		this.searchQuery = '';
 	}
 
 	onGetTweetsSuccess(data){
-		console.log(data);
-		this.tweets = data;
+		this.tweets = data.statuses;
+		console.log(this.tweets);
 	}
 
 	onGetTweetsFail(error){
-		console.log('work');
 		toastr.error(error.responseText);
 	}
 
@@ -24,4 +23,4 @@ class TweetStore{
 	}
 }
 
-export default alt.createStore(TweetStore);
+export default alt.createStore(TweetsStore);

@@ -4,9 +4,7 @@ const http =require('http');
 const Twitter = require('twitter');
 const express = require('express');
 const path = require('path');
-const httpProxy = require('http-proxy');
 
-const proxy = httpProxy.createProxyServer();
 const app = express();
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -23,29 +21,19 @@ const client = new Twitter({
 });
 
 
-if(!isProduction){
-  const bundle = require('./server/bundle.js');
-  bundle();
-
-  app.all('/*', function (req, res) {
-    proxy.web(req, res, {
-        target: 'http://localhost:8080'
-    });
-  });
-}
-
-proxy.on('error', function(e) {
-  console.log('Could not connect to proxy, please try again...');
-});
-
 
 app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/api/getTweets',function(){
-	client.get('search/tweets', {q: 'fuck'}, function(error, tweets, response) {
-	   console.log(tweets);
+app.get('/api/tweets',function(req,res){
+
+	var filterObj = {
+		q: req.query.tweet
+	};
+	
+	client.get('search/tweets', filterObj, function(error, tweets, response) {
+	   res.send(tweets);
 	});
 });
 

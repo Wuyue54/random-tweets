@@ -1,10 +1,10 @@
 import React from 'react';
-import Tweet from './Tweet';
-
+import Tweets from './Tweets';
+console.log(Tweets);
 class App extends React.Component{
 	render(){
 		return(
-			<Tweet />
+			<Tweets />
 		);		
 	}
 }

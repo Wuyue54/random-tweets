@@ -1,6 +1,6 @@
 import alt  from '../alt';
 
-class TweetActions{
+class TweetsActions{
 	constructor(){
 		this.generateActions(
 			'getTweetsSuccess',
@@ -13,14 +13,15 @@ class TweetActions{
 		$.ajax({
 			url:'/api/tweets',
 			data: {
-				name:payload.searchQuery
+				tweet:payload.searchQuery
 			}
 		}).done((data)=>{
 			this.getTweetsSuccess(data);
 		}).fail((error)=>{
+			console.log('fail');
 			this.getTweetsFail(error);
 		});
 	}
 }
 
-export default alt.createActions(TweetActions);
+export default alt.createActions(TweetsActions);
