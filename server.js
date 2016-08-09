@@ -5,7 +5,7 @@ const Twitter = require('twitter');
 const express = require('express');
 
 const app = express();
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 3000);
 app.use('/static', express.static(__dirname + '/public'));
 
 
@@ -29,8 +29,8 @@ app.get('/api/getTweets',function(){
 });
 
 
-
-app.listen(app.get('port'),function(){
+const server = require('http').createServer(app);
+server.listen(app.get('port'),function(){
 	console.log("Express server listening on port " + app.get('port'));
 });
 // var params ={

@@ -1,22 +1,26 @@
 const webpack = require('webpack');
 const path = require('path');
 
-module.export = {
-	devtool:'inline-source-map',
-	entry:"./src",
+module.exports = {
+	devtool: 'inline-source-map',
+	entry:[
+		'webpack-dev-server/client?http://127.0.0.1:8080/',
+		'webpack/hot/only-dev-server',
+		'./src/index.js'
+	],
 	output:{
-		path: path.join(__dirname,'public'),
+		path: path.join(__dirname, 'public'),
 		filename: 'bundle.js'
 	},
 	resolve:{
 		modulesDirectories:['node_modules','src'],
-		extensions:[ '', '.js', '.jsx']
+		extensions:[ '', '.js','map', '.jsx']
 	},
 	module:{
 		loaders: [
 			{
 				test: /\.jsx?$/,
-        		exclude: /(node_modules|bower_components)/,
+        		exclude: /(node_modules)/,
         		loader: 'babel'
 			},
 			{
@@ -42,3 +46,4 @@ module.export = {
 	    })
 	]
 };
+
