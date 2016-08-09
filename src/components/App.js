@@ -1,6 +1,7 @@
 import React from 'react';
 import Tweets from './Tweets';
-console.log(Tweets);
+require('../style/style.scss');
+
 class App extends React.Component{
 	render(){
 		return(
