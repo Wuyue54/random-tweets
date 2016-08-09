@@ -9,11 +9,14 @@ class Tweet extends React.Component{
 
 		// 	}
 		// }).join();
+		let user = this.props.username;
+		let screenName = this.props.screen_name;
+		let url = 'https://twitter.com/' + screenName ;
 		return(
 			<li className = 'tweetSpan'>
 				<p>{this.props.text}</p>
 				{/* <p>{this.props.created_at}</p>*/}
-				<p><strong>{this.props.username}</strong></p>
+				<a href={url}><strong>{user}</strong></a>
 			</li>
 		);
 	}

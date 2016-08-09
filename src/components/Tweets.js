@@ -47,6 +47,7 @@ class Tweets extends React.Component{
 		let tweets = [];
 		this.state.tweets.forEach((t ,index)=>{
 			tweets.push(<Tweet  key ={index}
+								screen_name ={t.screen_name}
 								query = {this.state.searchQuery}
 								created_at = {t.created_at}
 								text = {t.text}

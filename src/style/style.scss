@@ -15,6 +15,12 @@ input ,button{
 	border: none;
 }
 
+a{
+	color: black;
+	&:hover{
+		color: black;
+	}
+}
 
 #app{
 	height:100%;
