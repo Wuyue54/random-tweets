@@ -1,11 +1,12 @@
 import alt from '../alt';
 import TweetActions from '../actions/TweetActions';
+import toastr from 'toastr';
 
 class TweetStore{
 	constructor(){
 		this.bindActions(TweetActions);
 		this.tweets = [];
-		this.query = '';
+		this.searchQuery = '';
 	}
 
 	onGetTweetsSuccess(data){
@@ -14,11 +15,12 @@ class TweetStore{
 	}
 
 	onGetTweetsFail(error){
-		console.log(error);
+		console.log('work');
+		toastr.error(error.responseText);
 	}
 
-	onUpdateQuery(e){
-		this.query = e.target.value;
+	onUpdataSearchQuery(e){
+		this.searchQuery = e.target.value;
 	}
 }
 

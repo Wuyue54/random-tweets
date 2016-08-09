@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "startt": "node server",
     "watch": "nodemon server.js",
     "start": "webpack-dev-server --hot --progress --colors",
     "build": "webpack --progress --colors"
@@ -18,6 +19,7 @@
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "request": "^2.74.0",
+    "toastr": "^2.1.2",
     "twitter": "1.4.0"
   },
   "devDependencies": {

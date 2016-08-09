@@ -3,8 +3,14 @@ require('babel-register');
 const http =require('http');
 const Twitter = require('twitter');
 const express = require('express');
+const path = require('path');
+const httpProxy = require('http-proxy');
 
+const proxy = httpProxy.createProxyServer();
 const app = express();
+
+const isProduction = process.env.NODE_ENV === 'production';
+
 app.set('port', process.env.PORT || 3000);
 app.use('/static', express.static(__dirname + '/public'));
 
@@ -17,6 +23,21 @@ const client = new Twitter({
 });
 
 
+if(!isProduction){
+  const bundle = require('./server/bundle.js');
+  bundle();
+
+  app.all('/*', function (req, res) {
+    proxy.web(req, res, {
+        target: 'http://localhost:8080'
+    });
+  });
+}
+
+proxy.on('error', function(e) {
+  console.log('Could not connect to proxy, please try again...');
+});
+
 
 app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html');
@@ -28,11 +49,15 @@ app.get('/api/getTweets',function(){
 	});
 });
 
-
-const server = require('http').createServer(app);
-server.listen(app.get('port'),function(){
-	console.log("Express server listening on port " + app.get('port'));
+app.listen(app.get('port'), function () {
+  console.log('Server running on port ' + app.get('port'));
 });
+
+
+// const server = require('http').createServer(app);
+// server.listen(app.get('port'),function(){
+// 	console.log("Express server listening on port " + app.get('port'));
+// });
 // var params ={
 // 	track:'fuck',
 // 	delimited : 'length'

@@ -5,7 +5,7 @@ class TweetActions{
 		this.generateActions(
 			'getTweetsSuccess',
 			'getTweetsFail',
-			'updataQuerySuccess'
+			'updataSearchQuery'
 		);
 	}
 
@@ -13,7 +13,7 @@ class TweetActions{
 		$.ajax({
 			url:'/api/tweets',
 			data: {
-				query : payload.query
+				name:payload.searchQuery
 			}
 		}).done((data)=>{
 			this.getTweetsSuccess(data);
