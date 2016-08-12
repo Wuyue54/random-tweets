@@ -47,7 +47,8 @@ class Tweets extends React.Component{
 		let tweets = [];
 		this.state.tweets.forEach((t ,index)=>{
 			tweets.push(<Tweet  key ={index}
-								screen_name ={t.screen_name}
+								img_url = {t.user.profile_image_url}
+								screen_name ={t.user.screen_name}
 								query = {this.state.searchQuery}
 								created_at = {t.created_at}
 								text = {t.text}
@@ -55,14 +56,18 @@ class Tweets extends React.Component{
 						/>);
 		});
 
-		let styleObj ={
+		let bgStyleObj ={
             backgroundColor: this.state.bgColor,
             height: this.state.height
         };
 
+        let titleStyleObj = {
+        	marginTop: this.state.titleMarginTop
+        };
+
 		return(
-			<div className ='bg' style = {styleObj}>
-				<h1 className ='title'>Random Tweets</h1>
+			<div className ='bg' style = {bgStyleObj}>
+				<h1 className ='title' style ={titleStyleObj}>Random Tweets</h1>
 				<div className = 'mainPart'>
 					<form ref='searchForm' className = 'inputGroup' onSubmit = {this.handleSubmit.bind(this)}>
 						<input  ref = 'searchInpu'

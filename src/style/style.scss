@@ -24,6 +24,7 @@ a{
 
 #app{
 	height:100%;
+
 }
 
 .bg{
@@ -31,13 +32,15 @@ a{
 	height: 100%;
 	padding: 1em;
 	text-align: center;
-	transition: all .6s ease-in-out, background-color .3s;
+	transition: all linear .3s;
+	padding-bottom: 110px;
 }
 
 .title{
-	margin: 1.6em 0 0 0;
+	margin: 3em 0 0 0;
 	font: 4em Permanent Marker;
 	color: #FFF;
+	transition: margin-top .6s ease-in-out ;
 }
 
 .inputGroup{
@@ -70,9 +73,31 @@ a{
 	padding: 1em;
 	margin: 1em 0;
 	text-align: left;
+	box-shadow: 0px 2px 3px #969696;
 	p{
 		line-height: 1.5em;
 		margin-bottom: 1em;
+	}
+	a{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.created-time{
+		font-size: 0.8em;
+		color: #2b2b2b;
+	}
+	.user-profile{
+		height: 48px;
+	}
+
+	.user-name{
+		height: 48px;
+		line-height: 48px;
+		padding-left: 1em;
+		transition: color .3s ease-in-out ;
+		&:hover{
+			color: #3a99d9;	
+		}
 	}
 }
 

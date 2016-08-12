@@ -53,22 +53,4 @@ app.listen(app.get('port'), function () {
 // server.listen(app.get('port'),function(){
 // 	console.log("Express server listening on port " + app.get('port'));
 // });
-// var params ={
-// 	track:'fuck',
-// 	delimited : 'length'
-// }
-// client.stream('statuses/filter', params,  function(stream) {
 
-//   stream.on('data', function(tweet) {
-//   	var flag= Boolean(tweet.text);
-//   	if(flag == true){
-//   		// tweets.push(tweet);
-//   		console.log(tweet.text);
-//   	}
-//   });
-
-//   stream.on('error', function(error) {
-//     console.log(error);
-//   });
-
-// });
